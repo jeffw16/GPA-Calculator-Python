@@ -6,44 +6,28 @@
  * @license None
 */
 
-public class GPACalculator {
-  // instance variables
-  private double dividend = 0.0;
-  private double divisor, quotient;
-  private double[] rawGrades;
-  private double[] gpamax;
+class GPACalculator:
+  dividend = 0.0;
+  divisor = 0.0;
+  quotient = 0.0;
+  rawGrades = [];
+  gpamax = [];
   
-  // constructors
-  public GPACalculator ( double[] rawGrades, double[] gpamax ) {
-    this.divisor = rawGrades.length-1;
-    this.rawGrades = rawGrades;
-    this.gpamax = gpamax;
-  }
-  /**public GPACalculator ( double[] rawGrades, int[] gpamax ) {
-    this.dividend = dividend;
-    this.divisor = divisor;
-    this.gpamax = gpamax;
-  }*/
+  def __init__ ( inRawGrades, inGPAMax):
+    divisor = len(inRawGrades)-1
+    rawGrades.extend( inRawGrades )
+    gpamax.extend( inGPAMax )
   
-  // mutator methods
-  public void setRawGrade ( int pos, double rawGrade ) {
-    if ( rawGrades.length >= pos && pos > 0 ) {
-      this.rawGrades[pos] = rawGrade;
-    }
-  }
-  public void setDivisor ( double divisor ) {
-    this.divisor = divisor;
-  }
+  def calculateGPA ():
+    for i in range ( 1, divisor ):
+      pregrade = rawGrades[i]
+      if pregrade > 100:
+        pregrade = 100
+      if pregrade < 0:
+        pregrade = 0
+      midgrade = pregrade - 60
   
-  // accessor methods
-  public double getRawGrade ( int pos ) {
-    return rawGrades[pos];
-  }
-  public double getDivisor () {
-    return divisor;
-  }
   
-  // methods
   public void calculateGPA () {
     // to be added soon
     for ( int i = 1; i <= divisor; i++ ) {
