@@ -26,37 +26,14 @@ class GPACalculator:
       if pregrade < 0:
         pregrade = 0
       midgrade = pregrade - 60
-  
-  
-  public void calculateGPA () {
-    // to be added soon
-    for ( int i = 1; i <= divisor; i++ ) {
-      double pregrade = rawGrades[i];
-      if ( pregrade > 100 ) {
-        System.out.println ( "Grades over 100 are set to 100 automatically." );
-        pregrade = 100;
-      }
-      if ( pregrade < 0 ) {
-        System.out.println ( "Grades less than 0 are set to 0 automatically." );
-        pregrade = 0;
-      }
-      
-      double midgrade = pregrade - 60;
-      if ( midgrade < 0 ) {
-        midgrade = 0;
-      }
-      
-      double postgrade = midgrade / 10;
-      postgrade += ( gpamax[i] - 4 );
-      
-      dividend += postgrade;
-    }
-    quotient = dividend / divisor;
-  }
-  
-  public String toString() {
-    return "" + quotient;
-  }
+      if midgrade < 0:
+        midgrade = 0
+      postgrade = midgrade / 10
+      postgrade += ( gpamax[i] - 4 )
+      dividend += postgrade
+    quotient = dividend / divisor
+  def __str__ ():
+    return "" + quotient
   
   public static void main ( String[] args ) {
     Scanner s = new Scanner( System.in );
